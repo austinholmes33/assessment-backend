@@ -16,8 +16,8 @@ const {deleteGoal} = require('./controller')
 
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
-app.post('/api/goals/:id', addGoal);
+app.post('/api/goals/', addGoal);
 app.put('/api/goals/:id', updateGoal);
-app.delete('/api/goals', deleteGoal);
+app.delete('/api/goals/:id', deleteGoal);
 
 app.listen(4000, () => console.log("Server running on 4000"));

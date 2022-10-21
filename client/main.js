@@ -26,6 +26,7 @@ const getFortune = () => {
 const addGoal = (event) => {
     event.preventDefault()
     let body = {
+        goal: goal.value
     }
     axios.post('http://localhost:4000/goals', body)
 .then((res) => {
@@ -36,12 +37,19 @@ const addGoal = (event) => {
 
 const updateGoal = (event) => {
     event.preventDefault()
+    let body = {
+        goal: goal.value
+    }
+    axios.put('http://localhost:4000/goals/')
 }
 
 const deleteGoal = (event) => {
     event.preventDefault()
+    axios.delete('http://localhost:4000/goals/')
 }
 
 complimentBtn.addEventListener('click', getCompliment)
 fortuneBtn.addEventListener('click', getFortune)
-movieSubmit.addEventListener('click', addMovie)
+goalSubmit.addEventListener('submit', addGoal)
+updateSubmit.addEventListener('submit', updateGoal)
+deleteSubmit.addEventListener('submit', deleteGoal)

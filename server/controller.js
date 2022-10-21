@@ -1,4 +1,5 @@
 const goals = []
+const idCount = 0
 
 module.exports = {
 
@@ -22,19 +23,32 @@ module.exports = {
     },
 
     addGoal: (req, res) => {
-        const {} = req.body
-        let newMovie = {
-            
-        }
-        goals.push()
+        const {goal} = req.body
+        goals.push(newGoal)
+        console.log(goals)
         res.status(200).send(goals)
+        idCount++
     },
 
     updateGoal: (req, res) => {
-
+        const updateId = req.params.id
+        let type = req.body.type
+        let index = goals.findIndex(element => element.id === +updateId)
+        if (goals[i] >= 5) {
+            goals
+            res.status(200).send(goals)
+        } else if (goals[i] <= 4) {
+            goals
+            res.status(200).send(goals)
+        } else {
+            res.sendStatus(400)
+        }
     },
 
     deleteGoal: (req, res) => {
-
-    }
+        const deleteId = req.params.id
+        let index = goals.findIndex(element => element.id === +deleteId)
+        goals.splice(index, 1)
+        res.status(200).send(goals)
+    },
 }
