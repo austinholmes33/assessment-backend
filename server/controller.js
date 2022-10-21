@@ -22,7 +22,7 @@ module.exports = {
     },
 
     addGoal: (req, res) => {
-        const {name, imageURL} = req.body
+        const {} = req.body
         let newMovie = {
             
         }
@@ -35,6 +35,6 @@ module.exports = {
     },
 
     deleteGoal: (req, res) => {
-        
+
     }
 }

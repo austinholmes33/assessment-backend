@@ -8,21 +8,25 @@
     <section>
       <button id="fortuneButton">Get a fortune</button>
     </section>
-    <form id="newGoal">
+    <form>
         <input type='text'
+        id="newGoal"
             placeholder="What is your goal today?"/>
         <button id='goalSubmit'>Submit</button>
     </form>
     <section>
-      <form id="updatedGoal">
+      <form>
         <input type='text'
+        id="updatedGoal"
         placeholder="Which goal did you change?"/>
-      <button></button>
+        <button id='updateSubmit'>Submit</button>
     </form>
     </section>
-    <form id="completedGoal">
+    <form>
       <input type='text'
-      placeholder='Which should be taken off the list?'/>
+      id="completedGoal"
+      placeholder='Which should be removed?'/>
+      <button id='deleteSubmit'>Submit</button>
     </form>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

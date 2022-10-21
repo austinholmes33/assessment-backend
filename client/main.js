@@ -1,7 +1,11 @@
-const complimentBtn = document.getElementById("complimentButton")
-const fortuneBtn = document.querySelector('#fortuneButton')
-const goalSubmit = document.querySelector('#goalSubmit')
-const newGoal = document.querySelector('#newGoal')
+const complimentBtn = document.getElementById("complimentButton");
+const fortuneBtn = document.querySelector('#fortuneButton');
+const goalSubmit = document.querySelector('#goalSubmit');
+const updateSubmit = document.querySelector('#updateSubmit');
+const deleteSubmit = document.querySelector('#deleteSubmit');
+const newGoal = document.querySelector('#newGoal');
+const updatedGoal = document.querySelector('#updatedGoal');
+const completedGoal = document.querySelector('#completedGoal');
 
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
@@ -16,9 +20,7 @@ const getFortune = () => {
         .then(res => {
             const data = res.data;
             alert(data);
-        .catch(err) 
-        }
-    });
+        });
 };
 
 const addGoal = (event) => {
@@ -29,7 +31,6 @@ const addGoal = (event) => {
 .then((res) => {
 	const data = res.data
     alert(data)
-.catch
 })
 }
 
