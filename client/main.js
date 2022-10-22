@@ -33,9 +33,9 @@ const addGoal = (event) => {
     }
 
     goalInput.value = ''
-    goalPriorityInput = ''
+    goalPriorityInput.value = ''
 
-    axios.post('http://localhost:4000/goals/', body)
+    axios.post('http://localhost:4000/create/', body)
     .then((res) => {
 	let db = res.data
     for(let i = 0; i < db.length; i++) {
@@ -49,11 +49,9 @@ const addGoal = (event) => {
 
 const updateGoalPriority = (event) => {
     event.preventDefault()
-    goalID = goalIdInput.value
-    let body = {
-        goal: goal.value
-    }
-    axios.put('http://localhost:4000/goals/priority/?id= incId')
+    incId = incIdInput.value
+
+    axios.put('http://localhost:4000/goals/priority/?id=' + incId)
     .then((res) => {
         let db = res.data
         for (let i = 0; i < db.length; i++) {

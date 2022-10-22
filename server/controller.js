@@ -1,5 +1,4 @@
 const goals = []
-const idCount = 0
 
 module.exports = {
 
@@ -23,32 +22,44 @@ module.exports = {
     },
 
     addGoal: (req, res) => {
-        const {goal} = req.body
+        const goal = req.body.goal
+        const priority = req.body.goalPriority
+        let highestId = 0
+        for (let i = 0; i < goals.length; i++) {
+            if (goals[i].id > highestId) {
+                highestId = goals[i].id
+            }
+        }
+        highestId++
+
+        let newGoal = {
+            goal: goal,
+            goalPriority: +goalPriority,
+            highestId: goals[i].id
+        }
         goals.push(newGoal)
         console.log(goals)
         res.status(200).send(goals)
-        idCount++
+ 
     },
 
     updateGoal: (req, res) => {
-        const updateId = req.params.id
-        let type = req.body.type
-        let index = goals.findIndex(element => element.id === +updateId)
-        if (goals[i] >= 5) {
-            goals
-            res.status(200).send(goals)
-        } else if (goals[i] <= 4) {
-            goals
-            res.status(200).send(goals)
-        } else {
-            res.sendStatus(400)
-        }
-    },
+        let id = req.params.id
+        id = +id
+        for (let i = 0; i < goals.length; i++) {
+            if (goals[i].id === id) {
+                goals[i].goalsPriority ++
+            }
+ }
+},
 
     deleteGoal: (req, res) => {
-        const deleteId = req.params.id
-        let index = goals.findIndex(element => element.id === +deleteId)
-        goals.splice(index, 1)
+        let id = +req.params.id
+        for (let i = 0; i < goals.length; i++) {
+            if (goals[i].id === id) {
+                goals.splice(i, 1)
+            }
+        }
         res.status(200).send(goals)
     },
 }
