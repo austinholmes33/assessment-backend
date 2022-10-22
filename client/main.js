@@ -1,11 +1,12 @@
 const complimentBtn = document.getElementById("complimentButton");
 const fortuneBtn = document.querySelector('#fortuneButton');
-const goalSubmit = document.querySelector('#goalSubmit');
-const updateSubmit = document.querySelector('#updateSubmit');
-const deleteSubmit = document.querySelector('#deleteSubmit');
+const goalInput = document.querySelector('#goal-input')
+const goalPriorityInput = document.querySelector('#goal-priority-input')
+const deleteIdInput = document.querySelector('#delete-id-input');
 const newGoal = document.querySelector('#newGoal');
-const updatedGoal = document.querySelector('#updatedGoal');
-const completedGoal = document.querySelector('#completedGoal');
+const deleteForm = document.querySelector('#delete-form');
+const incForm = document.querySelector('#inc-form')
+const incIdInput = document.querySelector('#inc-id-input')
 
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
@@ -25,31 +26,64 @@ const getFortune = () => {
 
 const addGoal = (event) => {
     event.preventDefault()
+
     let body = {
-        goal: goal.value
+        goal: goalInput.value,
+        goalPriority: goalPriorityInput.value,
     }
-    axios.post('http://localhost:4000/goals', body)
-.then((res) => {
-	const data = res.data
-    alert(data)
+
+    goalInput.value = ''
+    goalPriorityInput = ''
+
+    axios.post('http://localhost:4000/goals/', body)
+    .then((res) => {
+	let db = res.data
+    for(let i = 0; i < db.length; i++) {
+        displayUseronDOM(db[i])
+    }
 })
+    .catch((err) => {
+        console.log(err)
+    })
 }
 
-const updateGoal = (event) => {
+const updateGoalPriority = (event) => {
     event.preventDefault()
+    goalID = goalIdInput.value
     let body = {
         goal: goal.value
     }
-    axios.put('http://localhost:4000/goals/')
+    axios.put('http://localhost:4000/goals/priority/?id= incId')
+    .then((res) => {
+        let db = res.data
+        for (let i = 0; i < db.length; i++) {
+            displayUserOnDOM(db[i])
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 }
+
 
 const deleteGoal = (event) => {
     event.preventDefault()
-    axios.delete('http://localhost:4000/goals/')
+    deleteId = deleteIdInput.value
+
+    axios.delete('http://localhost:4000/delete/' + deleteId)
+    .then((res) => {
+        let db = response.data
+        for (let i = 0; i < db.length; i++) {
+            displayUserOnDOM(db[i])
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 }
 
 complimentBtn.addEventListener('click', getCompliment)
 fortuneBtn.addEventListener('click', getFortune)
-goalSubmit.addEventListener('submit', addGoal)
-updateSubmit.addEventListener('submit', updateGoal)
-deleteSubmit.addEventListener('submit', deleteGoal)
+newGoal.addEventListener('submit', addGoal)
+incForm.addEventListener('submit', updateGoalPriority)
+deleteForm.addEventListener('submit', deleteGoal)

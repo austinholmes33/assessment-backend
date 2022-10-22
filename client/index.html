@@ -11,22 +11,25 @@
     <h1>Goals</h1>
     <form id="newGoal">
         <input type='text'
-            placeholder="What is your goal today?"/>
-        <button id='goalSubmit'>Submit</button>
-    </form>
-    <section>
-      <form>
+        id="goal-input"
+        placeholder="What is your goal today?"/>
         <input type='text'
-        id="updatedGoal"
-        placeholder="Scale 1-10, What is the priority?"/>
-        <button id='updateSubmit'>Submit</button>
-    </form>
-    </section>
-    <form>
+        id="goal-priority-input"
+        placeholder="What is the priority?"/>
+        <input type="submit" value="Create goal"/>
+        </form>
+
+        <form id ="inc-form">
+          <input id="inc-id-input" 
+          placeholder="Goal Priority Change"/>
+          <input type="submit" value="Submit"/>
+        </form>
+
+        <form id="delete-form">
       <input type='text'
-      id="completedGoal"
-      placeholder='Which should be removed?'/>
-      <button id='deleteSubmit'>Submit</button>
+      id="delete-id-input"
+      placeholder='Remove goal'/>
+      <input type="submit" value="Delete"/>
     </form>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
