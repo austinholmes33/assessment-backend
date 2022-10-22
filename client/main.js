@@ -32,38 +32,31 @@ const addGoal = (event) => {
         goalPriority: goalPriorityInput.value,
     }
 
-    goalInput.value = ''
-    goalPriorityInput.value = ''
 
-    axios.post('http://localhost:4000/create/', body)
+    axios.post("http://localhost:4000/api/create/", body)
     .then((res) => {
-	let db = res.data
-    for(let i = 0; i < db.length; i++) {
-        displayUseronDOM(db[i])
-    }
+	let goals = res.data
+    console.log(goals)
 })
     .catch((err) => {
         console.log(err)
-        console.error(err.response.data); 
-        console.error(err.response.status);
     })
+    
+    goalInput.value = ''
+    goalPriorityInput.value = ''
 }
 
 const updateGoalPriority = (event) => {
     event.preventDefault()
     incId = incIdInput.value
 
-    axios.put('http://localhost:4000/goals/priority/?id=' + incId)
+    axios.put("http://localhost:4000/api/priority/?id=" + incId)
     .then((res) => {
-        let db = res.data
-        for (let i = 0; i < db.length; i++) {
-            displayUserOnDOM(db[i])
-        }
+        let goals = res.data
+        console.log(goals)
     })
     .catch((err) => {
         console.log(err)
-        console.error(err.response.data); 
-        console.error(err.response.status);
     })
 }
 
@@ -72,17 +65,13 @@ const deleteGoal = (event) => {
     event.preventDefault()
     deleteId = deleteIdInput.value
 
-    axios.delete('http://localhost:4000/delete/' + deleteId)
+    axios.delete("http://localhost:4000/api/delete/" + deleteId)
     .then((res) => {
-        let db = response.data
-        for (let i = 0; i < db.length; i++) {
-            displayUserOnDOM(db[i])
-        }
+        let goals = response.data
+        console.log(goals)
     })
     .catch((err) => {
         console.log(err)
-        console.error(err.response.data); 
-        console.error(err.response.status);
     })
 }
 

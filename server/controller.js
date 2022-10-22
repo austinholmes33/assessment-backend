@@ -23,7 +23,7 @@ module.exports = {
 
     addGoal: (req, res) => {
         const goal = req.body.goal
-        const priority = req.body.goalPriority
+        const goalPriority = req.body.goalPriority
         let highestId = 0
         for (let i = 0; i < goals.length; i++) {
             if (goals[i].id > highestId) {
@@ -34,7 +34,7 @@ module.exports = {
 
         let newGoal = {
             goal: goal,
-            goalPriority: +goalPriority,
+            goalPriority: goalPriority,
             highestId: goals[i].id
         }
         goals.push(newGoal)
