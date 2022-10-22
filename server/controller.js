@@ -13,7 +13,7 @@ module.exports = {
     },
 
     getFortune: (req, res) => {
-        const fortunes = ['It will be a good day', 'It will be a bad day', 'You will succeed', 'You will not succeed'];
+        const fortunes = ['It will be a good day', 'It will be a bad day', 'You will succeed', 'You will not succeed', 'You will eat today'];
 
         let randomIndex = Math.floor(Math.random() * fortunes.length);
         let randomFortune = fortunes[randomIndex];
@@ -35,7 +35,7 @@ module.exports = {
         let newGoal = {
             goal: goal,
             goalPriority: goalPriority,
-            highestId: goals[i].id
+            id: highestId,
         }
         goals.push(newGoal)
         console.log(goals)
@@ -51,6 +51,7 @@ module.exports = {
                 goals[i].goalsPriority ++
             }
  }
+    res.status(200).send(goals)
 },
 
     deleteGoal: (req, res) => {
