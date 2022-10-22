@@ -50,7 +50,7 @@ const updateGoalPriority = (event) => {
     event.preventDefault()
     incId = incIdInput.value
 
-    axios.put("http://localhost:4000/api/priority/?id=" + incId)
+    axios.put("http://localhost:4000/api/priority/" + incId)
     .then((res) => {
         let goals = res.data
         console.log(goals)
@@ -67,7 +67,7 @@ const deleteGoal = (event) => {
 
     axios.delete("http://localhost:4000/api/delete/" + deleteId)
     .then((res) => {
-        let goals = response.data
+        let goals = res.data
         console.log(goals)
     })
     .catch((err) => {

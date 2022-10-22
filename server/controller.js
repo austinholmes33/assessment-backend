@@ -48,7 +48,7 @@ module.exports = {
         id = +id
         for (let i = 0; i < goals.length; i++) {
             if (goals[i].id === id) {
-                goals[i].goalsPriority ++
+                goals[i].goalPriority ++
             }
  }
     res.status(200).send(goals)
